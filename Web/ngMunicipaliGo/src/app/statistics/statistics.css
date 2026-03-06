@@ -1,0 +1,159 @@
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+/* ================= */
+/* Charts */
+/* ================= */
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+
+
+.chart-body {
+  height: 320px;
+  position: relative;
+}
+
+/* ================= */
+/* KPI CARDS */
+/* ================= */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.chart-card,
+.kpi-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease;
+}
+
+
+
+.kpi-title {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.kpi-card h2 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #2c3e50;
+}
+
+.kpi-card span {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.kpi-bar {
+  height: 6px;
+  background: #ecf0f1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.kpi-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+}
+
+.stats-filters {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;   /* centre le contenu interne */
+
+  padding: 20px 30px;
+  margin: 0 auto 25px auto;  /* centre le bloc lui-même */
+
+  width: fit-content;        /* empêche qu’il prenne toute la largeur */
+  
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+
+/* 🔥 Boutons pill */
+.pill-button {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.pill-button:hover {
+  background: white;
+  transform: translateY(-1px);
+}
+
+.pill-button.active {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 🔥 Select pill */
+.pill-select {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.85);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.pill-select:hover {
+  background: white;
+}
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
+}

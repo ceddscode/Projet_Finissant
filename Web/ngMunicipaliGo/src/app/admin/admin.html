@@ -1,0 +1,48 @@
+<div class="page">
+    <div class="details-header">
+        <h1>{{ 'admin.userList' | translate }}</h1>
+    </div>
+
+    <div class="users-list">
+
+        <div *ngFor="let u of users" class="user-card" [routerLink]="['/admin/user-details', u.id]">
+
+            <div class="user-content">
+
+                <!-- Nom complet -->
+                <h3 class="user-name">
+                    {{ u.firstName || '—' }} {{ u.lastName || '' }}
+                </h3>
+
+                <div class="user-meta">
+
+                   
+                    <div class="meta-item">
+                        <i class="fas fa-user-shield meta-icon"></i>
+                        <span>
+                            <strong>{{ 'admin.role' | translate }} :</strong>
+                            {{ roleLabel(u.role) | translate }}
+                        </span>
+                    </div>
+                    <div class="meta-item email">
+                        <i class="fas fa-envelope meta-icon"></i>
+                        <span>
+                            <strong>{{ 'admin.email' | translate }} :</strong>
+                            {{ u.email }}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div *ngIf="!users || users.length === 0" class="empty-state">
+            <i class="fas fa-users empty-icon"></i>
+            <h3>{{ 'admin.userList' | translate }}</h3>
+            <p>{{ 'admin.noUsers' | translate }}</p>
+        </div>
+
+    </div>
+</div>

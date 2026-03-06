@@ -1,0 +1,146 @@
+.app-header {
+  height: 72px;
+  background-color: #F9FAF9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px 0 32px;
+  padding-right: 60px;
+  flex-shrink: 0;
+}
+
+.app-main {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* GAUCHE */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* DROITE */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* LOGO */
+.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* NAV LINKS */
+.nav-link {
+  color: #4FA37A !important;
+  font-weight: 500;
+  background-color: transparent !important;
+}
+
+.nav-link:hover {
+  background-color: rgba(79, 163, 122, 0.12) !important;
+}
+
+/* LOGOUT BUTTON */
+.header-right button[mat-raised-button] {
+  background-color: #4FA37A !important;
+  color: white !important;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* CHAT BUTTON */
+.chat-nav-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: black; /* ✅ match nav-link color */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  margin: 0 8px; /* ✅ horizontal spacing matching nav links */
+  padding: 0 !important;
+  vertical-align: middle; /* ✅ align with mat-button elements */
+}
+
+.chat-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+::ng-deep .chat-nav-btn.mat-mdc-icon-button {
+  padding: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  --mdc-icon-button-state-layer-size: 32px;
+}
+
+::ng-deep .chat-nav-btn .mat-mdc-button-touch-target {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* CHAT BADGE */
+.chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 7px;
+  background: #4FA37A;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  border: 1.5px solid #F9FAF9;
+}
+
+/* LANGUAGE SELECT */
+::ng-deep .header-right .mat-mdc-select {
+  overflow: visible;
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+::ng-deep .header-right .mat-mdc-form-field {
+  width: auto !important;
+  flex: 0 0 auto !important;
+}
+
+::ng-deep .header-right .mat-mdc-select .mat-mdc-select-trigger {
+  padding-right: 0 !important;
+}
+
+::ng-deep .header-right .mat-mdc-select .mat-mdc-select-value {
+  padding-right: 0 !important;
+}
+
+::ng-deep .header-right .mat-mdc-select .mat-mdc-select-arrow-wrapper {
+  padding-left: 8px !important;
+}
+
+::ng-deep .language-panel {
+  min-width: 140px !important;
+  max-width: 200px !important;
+  z-index: 1000 !important;
+}
+
+::ng-deep .language-panel .mat-mdc-option {
+  padding: 0 16px !important;
+  white-space: nowrap;
+}

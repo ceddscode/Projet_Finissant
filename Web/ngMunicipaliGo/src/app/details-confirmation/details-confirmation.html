@@ -1,0 +1,157 @@
+<!-- details-confirmation.html -->
+<div class="page" *ngIf="incident; else loading">
+  <div class="details-header">
+    <h1>{{ 'details.titleConfirmationDetails' | translate }}</h1>
+  </div>
+
+  <div class="incident-card details-card">
+    <div class="incident-content">
+      <div class="left-grid">
+        <div class="left-top">
+          <h3 class="incident-title big">{{ incident.title }}</h3>
+
+          <div class="incident-meta">
+            <div class="meta-item">
+              <i class="fas fa-map-marker-alt meta-icon"></i>
+              <span>{{ incident.location }}<span *ngIf="incident.quartier">, quartier {{ incident.quartier
+                  }}</span></span>
+            </div>
+
+            <div class="meta-item">
+              <i class="fas fa-tag meta-icon"></i>
+              <span>{{ incident.categories >= 0 ? (categoryLabel(incident.categories) | translate) : '-' }}</span>
+            </div>
+
+            <div class="meta-item">
+              <i class="fas fa-clock meta-icon"></i>
+              <span>{{ translateDate(incident.createdAt) }}</span>
+            </div>
+
+            <div class="meta-item">
+              <i class="fas fa-heart meta-icon text-danger"></i>
+              <span>{{ incident.likeCount || 0 }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="left-bottom">
+          <div class="desc-text">
+            {{ incident.confirmationDescription || '-' }}
+          </div>
+        </div>
+
+        <div class="confirmation-images-grid" *ngIf="incident.confirmationImagesUrl?.length">
+          <img class="clickable" *ngFor="let img of incident.confirmationImagesUrl; let i = index" [src]="img"
+            (click)="openCarousel('confirmationImagesUrl', i)" alt="">
+        </div>
+
+        <!-- ========================= -->
+        <!-- HISTORIQUE INCIDENT -->
+        <!-- ========================= -->
+        <div class="incident-history-card" *ngIf="incidentHistory?.length">
+
+          <div class="history-header">
+            <i class="fas fa-history"></i>
+            <h2>{{ 'details.historyTitle' | translate }}</h2>
+          </div>
+
+          <div class="history-scroll">
+
+            <div *ngFor="let h of incidentHistory" class="history-item">
+
+              <div class="history-icon">
+                <i [ngClass]="getHistoryIcon(h.interventionType)"></i>
+              </div>
+
+              <div class="history-content">
+
+                <div class="history-top">
+                  <strong>{{ h.nomUtilisateur }}</strong>
+                  <span class="role-badge">
+                    {{ roleLabel(h.roleUtilisateur) }}
+                  </span>
+                </div>
+
+                <div class="history-meta">
+                  <span class="history-type">
+                    {{ interventionLabel(h.interventionType) }}
+                  </span>
+                  <span class="history-date">
+                    {{ translateDate(h.updatedAt) }}
+                  </span>
+                </div>
+
+                <!-- Description en cas de refus -->
+                <div *ngIf="h.refusDescription && h.interventionType == 7" class="history-refusal">
+                  <i class="fas fa-circle-xmark"></i>
+                  {{ h.refusDescription }}
+                </div>
+
+                <!-- Images de confirmation -->
+                <div *ngIf="h.confirmationImgUrls?.length && h.interventionType == 6" class="history-images">
+                  <img *ngFor="let img of h.confirmationImgUrls" [src]="img" alt="confirmation image"
+                    class="clickable" />
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <button *ngIf="incident.status === Status.WaitingForValidation" class="btn primary" (click)="approveIncident()">
+          {{ 'common.approve' | translate }}
+        </button>
+
+        <button *ngIf="incident.status === Status.WaitingForValidation" class="btn danger" (click)="refuseIncident()">
+          {{ 'common.reject' | translate }}
+        </button>
+
+        <button class="btn primary" (click)="confirmIncident()">
+          {{ 'details.buttons.confirmIncident' | translate }}
+        </button>
+
+        <button class="btn danger" (click)="refuseIncident()">
+          {{ 'details.buttons.refuseIncident' | translate }}
+        </button>
+
+        <button class="btn ghost" (click)="goBack()">
+          {{ 'details.buttons.back' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="incident-image">
+      <img *ngIf="incident.imagesUrl?.length" [src]="incident.imagesUrl[0]" [alt]="incident.title"
+        class="main-image clickable" (click)="openCarousel('imagesUrl', 0)" />
+
+      <div *ngIf="!incident.imagesUrl?.length" class="no-image">
+        <i class="fas fa-camera"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-modal" *ngIf="isOpen" (click)="closeCarousel()">
+    <div class="img-modal-content" (click)="$event.stopPropagation()">
+      <button class="close" (click)="closeCarousel()">✕</button>
+      <button class="nav left" (click)="prev()" [disabled]="currentIndex === 0">‹</button>
+
+      <img [src]="carouselImageUrls[currentIndex]" alt="full image" />
+
+      <button class="nav right" (click)="next()" [disabled]="currentIndex === carouselImageUrls.length - 1">
+        ›
+      </button>
+
+      <div class="counter">
+        {{ currentIndex + 1 }} / {{ carouselImageUrls.length }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="loading">{{ 'common.loading' | translate }}</p>
+</ng-template>

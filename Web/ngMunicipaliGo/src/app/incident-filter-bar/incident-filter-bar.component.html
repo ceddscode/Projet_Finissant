@@ -1,0 +1,70 @@
+<div class="incident-filter-bar-root">
+  <div class="filter-row">
+    <div class="filter-item search-bar">
+      <label>{{'allIncidents.search' | translate}}</label>
+      <input [ngModel]="searchTerm()" (ngModelChange)="searchTermChange.emit($event)" type="text" placeholder="{{ 'allIncidents.hintSearch' | translate }}" maxlength="100"/>
+      @if (isLoading()) {
+        <i class="fas fa-spinner fa-spin search-icon"></i>
+      } @else {
+        <i class="fas fa-search search-icon"></i>
+      }
+    </div>
+
+    <div class="filter-item category">
+      <label>{{ 'allIncidents.category' | translate }}</label>
+      <select [ngModel]="selectedCategory()" (ngModelChange)="selectedCategoryChange.emit($event)">
+        <option value="">{{'allIncidents.categorieTitle' | translate}}</option>
+        @for (cat of categories(); track cat) {
+          <option [value]="cat.value">{{ cat.value | categoryLabel | async }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-item status-select">
+      <label>{{'allIncidents.status' | translate}}</label>
+      <select [ngModel]="selectedStatus()" (ngModelChange)="selectedStatusChange.emit($event)">
+        <option value="">{{'allIncidents.statusTitle' | translate}}</option>
+        @for (stat of statuses(); track stat) {
+          <option [value]="stat.value">{{stat.value | statusLabel | async}}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-item sort">
+      <label>{{ 'allIncidents.sortBy' | translate }}</label>
+      <select [ngModel]="sort()" (ngModelChange)="sortChange.emit($event)">
+        <option value="CreatedAt">{{'sortEnum.creationDate' | translate}}</option>
+        <option value="Categories">{{'sortEnum.category' | translate}}</option>
+        <option value="Status">{{'sortEnum.status' | translate}}</option>
+        <option value="ClosedAt">{{'sortEnum.endDate' | translate}}</option>
+        <option value="LikeCount">{{'sortEnum.like' | translate}}</option>
+      </select>
+    </div>
+
+    <div class="filter-item order">
+      <label>{{'allIncidents.orderBy' | translate}}</label>
+      <select [ngModel]="direction()" (ngModelChange)="directionChange.emit($event)">
+        <option value="asc">{{'orderEnum.asc' | translate}}</option>
+        <option value="desc">{{'orderEnum.desc' | translate}}</option>
+      </select>
+    </div>
+
+    <div class="filter-item date-from">
+      <label>{{'allIncidents.dateFrom' | translate}}</label>
+      <input type="date" [ngModel]="dateFrom()" (ngModelChange)="dateFromChange.emit($event.target ? $any($event.target).value : $event)"/>
+    </div>
+
+    <div class="filter-item date-to">
+      <label>{{'allIncidents.dateTo' | translate}}</label>
+      <input type="date" [ngModel]="dateTo()" (ngModelChange)="dateToChange.emit($event.target ? $any($event.target).value : $event)"/>
+    </div>
+
+    <div class="filter-item filter-by">
+      <label>{{'allIncidents.filterBy' | translate}}</label>
+      <select [ngModel]="dateField()" (ngModelChange)="dateFieldChange.emit($event.target ? $any($event.target).value : $event)">
+        <option value="creation">{{'dateSortEnum.createDate' | translate}}</option>
+        <option value="closing">{{'dateSortEnum.endDate' | translate}}</option>
+      </select>
+    </div>
+  </div>
+</div>

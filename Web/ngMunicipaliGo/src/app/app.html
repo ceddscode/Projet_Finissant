@@ -1,0 +1,68 @@
+<header class="app-header">
+  <!-- GAUCHE -->
+  <div class="header-left">
+    <img src="assets/Logo.svg" (click)="logoClick()" alt="MunicipaliGO" class="logo">
+
+    <div *ngIf="isLoggedIn()">
+      <button mat-button routerLink="/attente" class="nav-link">{{ 'app.validation' | translate }}</button>
+      <button mat-button routerLink="/assignation" class="nav-link">{{ 'app.assignment' | translate }}</button>
+      <button mat-button routerLink="/confirmation" class="nav-link">{{ 'app.confirmation' | translate }}</button>
+      <button mat-button routerLink="/map" class="nav-link">{{ 'app.map' | translate }}</button>
+      <button mat-button routerLink="/whitecolar" class="nav-link">{{ 'app.listIncident' | translate }}</button>
+      <button mat-button routerLink="/statistics" class="nav-link">{{ 'app.stats' | translate }}</button>
+
+
+      <!-- ✅ Moved here, next to nav links -->
+      <button
+        mat-icon-button
+        routerLink="/chat"
+        class="chat-nav-btn"
+        title="Messages">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span *ngIf="totalUnread > 0" class="chat-badge">{{ totalUnread > 99 ? '99+' : totalUnread }}</span>
+      </button>
+      
+    </div>
+    <div class="header-left" *ngIf="isLoggedIn() && isAdmin()">
+      <button mat-button routerLink="/admin" class="nav-link">Admin</button>
+      <button mat-button routerLink="/user-create" class="nav-link">{{ 'app.createUser' | translate }}</button>
+      
+    </div>
+  </div>
+
+   
+
+  <!-- DROITE -->
+  <div class="header-right">
+    <mat-select
+      [(ngModel)]="language"
+      (selectionChange)="changeLanguage($event.value)"
+      panelClass="language-panel">
+      <mat-option value="fr">Français</mat-option>
+      <mat-option value="en">English</mat-option>
+    </mat-select>
+
+    <button
+      mat-raised-button
+      (click)="logout()"
+      *ngIf="isLoggedIn()"
+    >
+      {{ 'app.logout' | translate }}
+    </button>
+  </div>
+</header>
+
+<main class="app-main">
+  <router-outlet></router-outlet>
+  <app-flappy
+  *ngIf="showGame"
+  (close)="showGame = false">
+</app-flappy>
+<app-snake-overlay
+  *ngIf="showSnake"
+  (closed)="showSnake = false">
+</app-snake-overlay>
+  <app-confirm-modal></app-confirm-modal>
+</main>

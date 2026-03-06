@@ -1,0 +1,149 @@
+/* =========================
+   OVERLAY BACKGROUND
+========================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0f2027 0%, #000000 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
+/* =========================
+   GAME WINDOW
+========================= */
+.game-window {
+  background: rgba(20, 20, 20, 0.9);
+  padding: 30px;
+  border-radius: 24px;
+  color: white;
+  text-align: center;
+  border: 2px solid #00ff88;
+  box-shadow:
+    0 0 20px #00ff88,
+    0 0 60px #00ff8855,
+    inset 0 0 30px #00ff8822;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Bouton X */
+.header button {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.header button:hover {
+  background: #ff0000;
+  transform: scale(1.05);
+}
+
+/* =========================
+   BOARD
+========================= */
+.board {
+  position: relative;
+  background: linear-gradient(145deg, #111, #0a0a0a);
+  border: 2px solid #00ff88;
+  border-radius: 16px;
+  box-shadow: inset 0 0 25px #00ff8833;
+  overflow: hidden;
+}
+
+/* =========================
+   SNAKE SEGMENTS
+========================= */
+.segment {
+  position: absolute;
+  background-image: url('/assets/po.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  transition: transform 0.1s linear;
+  filter: drop-shadow(0 0 6px #00ff88);
+}
+
+/* =========================
+   FOOD
+========================= */
+.food {
+  position: absolute;
+  background-image: url('/assets/apple.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* =========================
+   OBSTACLES
+========================= */
+.obstacle {
+  position: absolute;
+  background-image: url('/assets/ced.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 6px #ff0000);
+}
+
+/* =========================
+   REPLAY BUTTON
+========================= */
+.game-window > button {
+  margin-top: 20px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: linear-gradient(145deg, #00ff88, #00cc6a);
+  color: black;
+  box-shadow: 0 0 15px #00ff88aa;
+  transition: all 0.2s ease;
+}
+
+.game-window > button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #00ff88;
+}
+
+.game-window > button:active {
+  transform: scale(0.95);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

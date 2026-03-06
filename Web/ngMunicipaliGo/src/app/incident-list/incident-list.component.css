@@ -1,0 +1,47 @@
+/* Styles robustes et isolés pour incident-list */
+.incident-list-root { display: flex; flex-direction: column; gap: 1rem; }
+.incident-list-link { text-decoration: none; color: inherit; }
+.incident-list-card { display: flex; flex-direction: row; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.12); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; height: 200px; gap: 1rem; border: none; }
+.incident-list-card:hover { transform: translateY(-4px); box-shadow: 0 16px 42px rgba(0,0,0,0.22); }
+.incident-list-content { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 9px; overflow: hidden; }
+.incident-title { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a1a; margin: 0; white-space: normal; line-height: 1.2em; max-height: 2.4em; }
+.incident-meta { display: flex; flex-direction: row; align-items: flex-start; flex: 1; gap: 32px; padding-bottom: 10px; }
+.meta-left { display: flex; flex-direction: column; gap: 6px; }
+.meta-right { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.meta-item { display: flex; align-items: center; gap: 10px; color: #556; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meta-icon { font-size: 13px; width: 20px; min-width: 20px; text-align: center; }
+
+/* Couleurs pour les icônes */
+.meta-location .meta-icon { color: #2db88e; }
+.meta-category .meta-icon { color: #f39c12; }
+.meta-likes .meta-icon    { color: #e74c3c; }
+.meta-created .meta-icon  { color: #3498db; }
+.meta-closed .meta-icon   { color: #555555; }
+
+/* Styles pour les badges de statut (statusClassPipe) */
+.status-waitingForValidation { background: #fff3cd; color: #856404; }
+.status-validated { background: #d4edda; color: #155724; }
+.status-waitingForAssignation { background: #cfe2ff; color: #084298; }
+.status-assignedToCitizen { background: #e7d4ff; color: #5a1a8c; }
+.status-underRepair { background: #fff3cd; color: #856404; }
+.status-done { background: #d1ecf1; color: #0c5460; }
+.status-assignedToBlueCollar { background: #fde8d8; color: #8a3a0f; }
+.status-waitingForAssignationToCitizen { background: #ddeeff; color: #0a3d6b; }
+.status-waitingForConfirmation { background: #e8f5e9; color: #1b5e20; }
+.incident-list-status-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+.status-badge-container { margin-top: auto; }
+.incident-list-image { width: 210px; min-width: 210px; height: 100%; background: #f5f5f5; overflow: hidden; display: flex; align-items: center; justify-content: center; border-left: 1px solid #e8e8e8; }
+.incident-list-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.no-image { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #3b86a9, #4fa37a); }
+.no-image i { font-size: 44px; color: rgba(255,255,255,0.8); }
+.incident-list-pagination-container { display: flex; justify-content: center; gap: 8px; margin: 20px 0; }
+.incident-list-pagination-container button { padding: 6px 14px; border: 1px solid rgba(0,0,0,0.2); background: #fff; color: #333; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background 0.2s, color 0.2s; }
+.incident-list-pagination-container button:hover:not(:disabled) { background: #3fbb95; color: #fff; }
+.incident-list-pagination-container button:disabled { opacity: 0.4; cursor: not-allowed; }
+.incident-list-pagination-container button.active { background: #3fbb95; color: #fff; font-weight: 700; }
+.incident-list-empty-state { text-align: center; padding: 60px 20px; color: #ffffff; background: rgba(255, 255, 255, 0.1); border-radius: 12px; border: 2px dashed rgba(255, 255, 255, 0.3); }
+.empty-icon { font-size: 64px; margin-bottom: 16px; color: rgba(255, 255, 255, 0.7); display: block; }
+.incident-list-empty-state h3 { font-size: 20px; color: #ffffff; margin: 0 0 8px 0; }
+.incident-list-empty-state p { font-size: 14px; margin: 0; opacity: 0.8; }
+.incident-list-loading { text-align: center; }
+@media (max-width: 1024px) { .incident-list-card { height: auto; } .incident-list-image { display: none; } }

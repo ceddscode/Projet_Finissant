@@ -1,0 +1,107 @@
+<div class="page">
+  <div class="details-header">
+  </div>
+
+  <div class="map-shell">
+    <google-map
+      #map
+      [center]="center"
+      [zoom]="zoom"
+      [options]="options"
+      width="100%"
+      height="100%">
+
+      <map-marker
+        *ngFor="let marker of incidentMarkers"
+        [position]="marker.position"
+        [options]="marker.options"
+        (mapClick)="onMarkerClick(marker.id)">
+      </map-marker>
+
+      <map-polygon
+        *ngIf="selectedPolygonPaths"
+        [paths]="selectedPolygonPaths"
+        [options]="{
+          fillOpacity: 0.08,
+          strokeOpacity: 0.95,
+          strokeWeight: 2
+        }">
+      </map-polygon>
+
+    </google-map>
+
+    <div class="filter-bar">
+      <div class="pill search">
+        <span class="icon">⌕</span>
+        <input
+          [(ngModel)]="q"
+          (ngModelChange)="applyFilters()"
+          [placeholder]="'map.search' | translate" />
+      </div>
+
+      <button class="chip" type="button" (click)="resetFilters()">{{ 'map.reset' | translate }}</button>
+
+      <div class="pill">
+        <select [(ngModel)]="selectedStatus" (ngModelChange)="applyFilters()">
+          <option value="">{{ 'map.status' | translate }}</option>
+          <option *ngFor="let s of statuses" [value]="s.value">{{ statusLabel(s.value) }}</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <select [(ngModel)]="selectedCategory" (ngModelChange)="applyFilters()">
+          <option [ngValue]="null">{{ 'allIncidents.category' | translate }}</option>
+          <option *ngFor="let c of categories" [ngValue]="c.value">{{ categoryLabel(c.value) }}</option>
+        </select>
+      </div>
+
+      <div class="pill">
+        <select [(ngModel)]="selectedQuartier" (ngModelChange)="onQuartierChanged()">
+          <option value="">{{ 'map.neighborhood' | translate }}</option>
+          <option *ngFor="let q of quartiers" [value]="q">{{ q }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sheet" [style.height.px]="sheetHeight">
+      <div class="handle" (mousedown)="startDrag($event)" (touchstart)="startDrag($event)">
+        <div class="handle-bar"></div>
+      </div>
+
+      <div class="sheet-head">
+        <div class="title">{{ 'map.incidents' | translate }} ({{ visible.length }})</div>
+        <button class="refresh" type="button" (click)="applyFilters()">⟳</button>
+      </div>
+
+      <div class="feed">
+        <button
+          class="card"
+          *ngFor="let i of visible; trackBy: trackById"
+          type="button"
+          (click)="openDetails(i)">
+
+          <div class="thumb">
+            <img *ngIf="thumbUrl(i)" [src]="thumbUrl(i)" alt="" />
+            <div *ngIf="!thumbUrl(i)" class="thumb-ph">🖼️</div>
+          </div>
+
+          <div class="body">
+            <div class="card-title">{{ i.title }}</div>
+
+            <div class="meta">
+              <span class="muted">{{ i.location }}<span *ngIf="i.quartier">, quartier {{ i.quartier }}</span></span>
+            </div>
+
+            <div class="desc" *ngIf="i.description">{{ i.description }}</div>
+
+            <div class="row">
+              <button type="button" class="mini" (click)="focusOn(i); $event.stopPropagation()">{{ 'map.focus' | translate }}</button>
+              <button type="button" class="mini" (click)="openDetails(i); $event.stopPropagation()">{{ 'map.open' | translate }}</button>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

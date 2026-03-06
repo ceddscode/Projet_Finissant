@@ -1,0 +1,111 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal.success h2 {
+  color: black;
+}
+
+.modal.danger h2 {
+  color: black;
+}
+
+.ok-btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #4FA37A;
+  color: white;
+  font-size: 16px;
+}
+
+.ok-btn:hover {
+  background-color: #43946f;
+}
+
+/* ===== TEXTAREA ===== */
+.description-field {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 110px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.description-field:focus {
+  outline: none;
+  border-color: #4FA37A;
+  box-shadow: 0 0 0 3px rgba(79, 163, 122, 0.15);
+}
+
+
+/* ===== CONTAINER BOUTONS ===== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+
+/* ===== BOUTON ANNULER ===== */
+.btn.ghost {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  background-color: white;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.ghost:hover {
+  background-color: #f3f3f3;
+  border-color: #c5c5c5;
+}
+
+
+/* ===== BOUTON REFUSER ===== */
+.btn.danger {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: none;
+  background-color: #E5484D;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.05s ease;
+}
+
+.btn.danger:hover {
+  background-color: #d63c41;
+}
+
+.btn.danger:active {
+  transform: scale(0.97);
+}

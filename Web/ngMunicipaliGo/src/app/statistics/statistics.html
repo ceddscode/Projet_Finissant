@@ -1,0 +1,134 @@
+<div class="dashboard-wrapper">
+
+  <div class="stats-filters">
+
+    <!-- Period -->
+    <span class="filter-label">
+      {{ 'Stats.FILTER.PERIOD' | translate }}
+    </span>
+
+    <button 
+      class="pill-button"
+      [class.active]="selectedPeriod === 'day'"
+      (click)="changePeriod('day')">
+      {{ 'Stats.FILTER.DAY' | translate }}
+    </button>
+
+    <button 
+      class="pill-button"
+      [class.active]="selectedPeriod === 'week'"
+      (click)="changePeriod('week')">
+      {{ 'Stats.FILTER.WEEK' | translate }}
+    </button>
+
+    <button 
+      class="pill-button"
+      [class.active]="selectedPeriod === 'month'"
+      (click)="changePeriod('month')">
+      {{ 'Stats.FILTER.MONTH' | translate }}
+    </button>
+
+    <button 
+      class="pill-button"
+      [class.active]="selectedPeriod === 'year'"
+      (click)="changePeriod('year')">
+      {{ 'Stats.FILTER.YEAR' | translate }}
+    </button>
+
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-row">
+
+    <div class="chart-card">
+      <h3>{{ 'Stats.CHART.REPORTED' | translate }}</h3>
+      <div class="chart-body">
+        <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>{{ 'Stats.CHART.PER_PERIOD' | translate }}</h3>
+      <div class="chart-body">
+        <canvas baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [type]="'line'">
+        </canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Category -->
+  <div class="category-filter">
+
+    <span class="filter-label">
+      {{ 'Stats.FILTER.CATEGORY' | translate }}
+    </span>
+
+    <select 
+      class="pill-select"
+      [(ngModel)]="selectedCategory"
+      (change)="changeCategory()">
+
+      <option [ngValue]="null">
+        {{ 'Stats.FILTER.ALL' | translate }}
+      </option>
+
+      <option 
+        *ngFor="let cat of categoryLabels; let i = index"
+        [ngValue]="i">
+        {{ cat }}
+      </option>
+
+    </select>
+
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row">
+
+    <div class="kpi-card">
+      <p class="kpi-title">
+        {{ 'Stats.KPI.RESOLUTION' | translate }}
+      </p>
+      <h2>
+        {{AverageResolutionTime}} {{'Stats.UNITS.' + ResolutionUnit | translate}}
+      </h2>
+    </div>
+
+    <div class="kpi-card">
+      <p class="kpi-title">
+        {{ 'Stats.KPI.INCHARGE' | translate }}
+      </p>
+      <h2>
+        {{AverageInChargeTime}} {{'Stats.UNITS.' + InChargeUnit | translate}}
+      </h2>
+    </div>
+
+    <div class="kpi-card">
+      <p class="kpi-title">
+        {{ 'Stats.KPI.DONE' | translate }}
+      </p>
+      <h2>
+        {{Done}} Incidents
+      </h2>
+    </div>
+
+    <div class="kpi-card">
+      <p class="kpi-title">
+        {{ 'Stats.KPI.ASSIGN' | translate }}
+      </p>
+      <h2>
+        {{AverageAssignmentTime}} {{'Stats.UNITS.' + AssignmentUnit | translate}}
+      </h2>
+    </div>
+
+  </div>
+
+</div>

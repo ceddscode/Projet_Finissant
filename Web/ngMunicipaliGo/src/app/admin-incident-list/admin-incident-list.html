@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="details-header">
+    <h1>{{ 'allIncidents.title' | translate }}</h1>
+  </div>
+
+  <div class="incidents-filters">
+    <app-incident-filter-bar
+      [searchTerm]="searchTerm()"
+      [isLoading]="isLoading()"
+      [selectedCategory]="selectedCategory()"
+      [selectedStatus]="selectedStatus()"
+      [sort]="sort()"
+      [direction]="direction()"
+      [dateFrom]="dateFrom()"
+      [dateTo]="dateTo()"
+      [dateField]="dateField()"
+      [categories]="categories"
+      [statuses]="statuses"
+      (searchTermChange)="searchTerm.set($event); onSearchChange()"
+      (selectedCategoryChange)="selectedCategory.set($event); onFilterChange()"
+      (selectedStatusChange)="selectedStatus.set($event); onFilterChange()"
+      (sortChange)="sort.set($event); onFilterChange()"
+      (directionChange)="direction.set($event); onFilterChange()"
+      (dateFromChange)="dateFrom.set($event); onFilterChange()"
+      (dateToChange)="dateTo.set($event); onFilterChange()"
+      (dateFieldChange)="dateField.set($event); onFilterChange()"
+    ></app-incident-filter-bar>
+  </div>
+
+  <div class="incidents-list">
+    <app-incident-list
+      [incidents]="incidents()"
+      [isLoading]="isLoading()"
+      [currentPage]="currentPage()"
+      [totalPages]="totalPages()"
+      [pagesArray]="pagesArray()"
+      [errorMessage]="errorMessage()"
+      (pageChange)="goToPage($event)">
+    </app-incident-list>
+  </div>
+</div>

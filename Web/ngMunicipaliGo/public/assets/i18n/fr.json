@@ -1,0 +1,334 @@
+{
+    "login": {
+        "title": "Connexion",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "button": "Se connecter",
+        "Error": "Échec de la connexion. Veuillez vérifier vos identifiants.",
+        "Required": "L'e-mail est requis",
+        "PasswordRequired": "Le mot de passe est requis"
+    },
+    "app": {
+        "button1": "Connexion",
+        "logout": "Déconnexion",
+        "dashboard": "Tableau de bord",
+        "map": "Carte",
+        "validation": "Validation",
+        "assignment": "Assignation",
+        "confirmation": "À confirmer",
+        "createUser": "Créer un utilisateur",
+        "listUser": "Utilisateurs",
+        "listIncident": "Tous les incidents",
+        "stats": "Statistiques"
+    },
+    "incidents": {
+        "waitingApproval": "Incidents en attente de validation",
+        "waitingAssignment": "Incidents en attente d'assignation",
+        "waitingConfirmation": "Incidents en attente de confirmation",
+        "title": "Titre",
+        "status": "Statut",
+        "location": "Localisation",
+        "category": "Catégorie",
+        "createdAt": "Date de création",
+        "imagesUrl": "Images",
+        "noIncidentsWaiting": "Aucun incident en attente",
+        "allCaughtUp": "Vous êtes à jour ! Aucun incident en attente.",
+        "noIncidentsAssignation": "Aucun incident en attente d'assignation",
+        "noIncidentsConfirmation": "Aucun incident en attente de confirmation"
+    },
+    "details": {
+        "title": "Détails",
+        "descriptionPlaceholder": "Décris l’incident",
+        "description": "Description",
+        "titleConfirmationDetails": "Détails de la confirmation",
+        "images": "Images",
+        "historyTitle": "Historique",
+        "confirmationDescription" : "Description pour la confirmation",
+        "buttons": {
+            "edit": "Modifier",
+            "assignBlueCollar": "Assigner à un col bleu",
+            "assignCitizen": "Assigner à un citoyen",
+            "confirmIncident": "Confirmer",
+            "refuseIncident": "Refuser",
+            "back": "Retour"
+        },
+        "alerts": {
+            "approved": "Incident approuvé avec succès !",
+            "refused": "Incident refusé avec succès !",
+            "assignedToCitizen": "Incident assigné à un citoyen avec succès !",
+            "assignedToBlueCollar": "Incident assigné à un col bleu avec succès !",
+            "confirmed": "Incident confirmé avec succès!",
+            "descPlaceholderRefused": "Justifier le refus",
+            "edited":"Incident modifié"
+        },
+        "fields": {
+            "description": "Description"
+        },
+        "comments": {
+    "title": "Comments",
+    "loading": "Loading comments...",
+    "reports": "reports",
+    "delete": "Delete",
+    "noComments": "No comments",
+    "sort": "Trier",
+      "sortNewest": "Les plus récents",
+      "sortMostReported": "Les plus signalés"
+  }
+    },
+    "common": {
+        "approve": "Approuver",
+        "reject": "Rejeter",
+        "assign": "Assigner",
+        "loading": "Chargement de l'incident…",
+        "retry":"Veuillez vous reconnectez"
+    },
+    "map": {
+        "scrollHint": "Appuyez sur Ctrl et faites défiler",
+        "search": "Rechercher",
+        "reset": "Réinitialiser",
+        "status": "Statut",
+        "neighborhood": "Quartier",
+        "incidents": "Incidents",
+        "focus": "Centrer",
+        "open": "Ouvrir"
+    },
+    "date": {
+        "justNow": "À l'instant",
+        "minutesAgo_one": "il y a 1 minute",
+        "minutesAgo_other": "il y a {{count}} minutes",
+        "hoursAgo_one": "il y a 1 heure",
+        "hoursAgo_other": "il y a {{count}} heures",
+        "daysAgo_one": "il y a 1 jour",
+        "daysAgo_other": "il y a {{count}} jours",
+        "monthsAgo_one": "il y a 1 mois",
+        "monthsAgo_other": "il y a {{count}} mois"
+    },
+    "enums": {
+        "status": {
+            "WaitingForValidation": "En attente de validation",
+            "WaitingForAssignation": "En attente d'assignation",
+            "AssignedToCitizen": "Assigné à un citoyen",
+            "UnderRepair": "En cours de réparation",
+            "Done": "Terminé",
+            "WaitingForConfirmation": "En attente de confirmation",
+            "AssignedToBlueCollar": "Assigné à un col bleu",
+            "WaitingForAssignationToCitizen": "En attente d'assignation d'un citoyen"
+        },
+        "category": {
+            "Propreté": "Propreté",
+            "Mobilier": "Mobilier urbain",
+            "Signalisation": "Signalisation",
+            "EspacesVerts": "Espaces verts",
+            "Saisonnier": "Saisonnier",
+            "Social": "Social",
+            "cleanliness": "Propreté",
+            "furniture": "Mobilier urbain",
+            "roadSigns": "Signalisation",
+            "greenSpaces": "Espaces verts",
+            "seasonal": "Saisonnier",
+            "social": "Social"
+        }
+    },
+    "admin": {
+        "title": "Administration",
+        "userManagement": "Gestion des utilisateurs",
+        "createUser": "Créer un utilisateur",
+        "editUser": "Modifier un utilisateur",
+        "deleteUser": "Supprimer un utilisateur",
+        "userList": "Liste des utilisateurs",
+        "name": "Nom",
+        "firstName": "Prénom",
+        "email": "E-mail",
+        "role": "Rôle",
+        "actions": "Actions",
+        "noUsers": "Aucun utilisateur trouvé"
+    },
+    "user-details": {
+        "title": "Détails de l'utilisateur",
+        "name": "Nom",
+        "firstName": "Prénom",
+        "email": "E-mail",
+        "role": "Rôle",
+        "address": "Adresse",
+        "roadNumber": "Numéro civique",
+        "roadName": "Nom de rue",
+        "city": "Ville",
+        "postalCode": "Code postal",
+        "phone": "Téléphone",
+        "buttons": {
+            "save": "Enregistrer",
+            "cancel": "Retour"
+        },
+        "selectRole": {
+            "blueCollar": "Col bleu",
+            "citizen": "Citoyen",
+            "whiteCollar": "Col blanc"
+        },
+         "errors": {
+      "firstName": "Le prénom est requis (2–50 caractères)",
+      "lastName": "Le nom est requis (2–50 caractères)",
+      "email": "Veuillez entrer un email valide",
+      "phone": "Veuillez entrer un numéro de téléphone valide",
+      "roadNumber": "Le numéro civique est requis",
+      "roadName": "Le nom de rue doit contenir entre 2 et 100 caractères",
+      "city": "La ville est requise",
+      "postalCode": "Code postal invalide (ex: A1A 1A1)"
+    }
+    },
+    "user-create": {
+        "title": "Créer un utilisateur",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "security": "Sécurité",
+        "password": "Mot de passe",
+        "passwordConfirm": "Confirmation du mot de passe",
+        "address": "Adresse",
+        "roadNumber": "Numéro civique",
+        "roadName": "Nom de rue",
+        "city": "Ville",
+        "postalCode": "Code postal",
+        "buttons": {
+            "create": "Créer",
+            "cancel": "Retour"
+        }
+    },
+    "roles": {
+        "admin": "Administrateur",
+        "citizen": "Citoyen",
+        "blueCollar": "Col bleu",
+        "whiteCollar": "Col blanc"
+    },
+    "chat": {
+        "online": "En ligne",
+        "offline": "Hors ligne",
+        "typeMessage": "Tapez votre message à",
+        "noConversations": "Aucune conversation trouvée",
+        "recent": "Récent",
+        "searchPlaceholder": "Rechercher des conversations...",
+        "yourMessage": "Vos messages",
+        "selectOrStart": "Sélectionnez une conversation ou démarrez-en une nouvelle",
+        "newConversation": "Nouvelle conversation",
+        "searchPeoplePlaceholder": "Rechercher des cols bleus...",
+        "shareIncident": "Partager un incident",
+        "noUsers": "Aucun utilisateur trouvé",
+        "sharedIncident": "A partagé un incident 📎",
+        "loading": "Chargement des conversations..."
+    },
+    "allIncidents": {
+        "title": "Tous les incidents",
+        "citizen": "Citoyen",
+        "blueCollar": "Col bleu",
+        "whiteCollar": "Col blanc",
+        "category": "Catégorie",
+        "search": "Rechercher",
+        "status": "Statut",
+        "sortBy": "Trier par",
+        "orderBy": "Classer par",
+        "dateFrom": "Date de début",
+        "dateTo": "Date de fin",
+        "filterBy": "Filtrer par",
+        "hintSearch": "Rechercher par titre ou emplacement",
+        "categorieTitle": "Toutes les catégories",
+        "statusTitle": "Tous les statuts",
+        "datePlaceholder": "aaaa-mm-jj",
+        "closedDate": "Toujours ouvert",
+        "btnNext": "Suivant",
+        "btnPrevious": "Précédant",
+        "noIncident": "Aucun résultat trouvé",
+        "changeFilter": "Essayez de modifier les filtres ou l’ordre de tri.",
+        "errorNoInternet": "Pas de connexion Internet",
+        "errorNoInternetHelp": "Vérifiez votre connexion Wi-Fi ou câble réseau.",
+        "errorServer": "Erreur lors du chargement des incidents",
+        "errorServerHelp": "Veuillez réessayer plus tard ou contacter le support si le problème persiste.",
+        "waitingShow": "Chargement en cours..."
+    },
+    "modal": {
+        "ok": "OK",
+        "cancel": "Annuler",
+        "refuse": "Refuser",
+        "sessionExpired": "Session expirée"
+    },
+    "sortEnum": {
+        "creationDate": "Date de création",
+        "category": "Catégorie",
+        "status": "Statut",
+        "endDate": "Date de fin",
+        "like": "Popularité"
+    },
+    "orderEnum": {
+        "asc": "Moins récent",
+        "desc": "Plus récent"
+    },
+    "dateSortEnum": {
+        "createDate": "Date de création",
+        "endDate": "Date de fin"
+    },
+    "title": "Créer un utilisateur",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail : example@example.com",
+    "phone": "Téléphone  : 4506325478",
+    "security": "Sécurité",
+    "password": "Mot de passe",
+    "passwordConfirm": "Confirmation du mot de passe",
+    "address": "Adresse",
+    "roadNumber": "Numéro civique",
+    "roadName": "Nom de rue",
+    "city": "Ville",
+    "postalCode": "Code postal : H2X 3Y7",
+    "buttons": {
+        "create": "Créer",
+        "cancel": "Retour"
+    },
+    "interventionType": {
+        "Created": "Incident créé",
+        "Validated": "Incident validé",
+        "AssignedToCitizen": "Assigné à un citoyen",
+        "TaskTookByCitizen": "Pris en charge par le citoyen",
+        "AssignedToBlueCollar": "Assigné à un col bleu",
+        "UnderRepair": "En cours de réparation",
+        "DoneRepairing": "Réparation terminée",
+        "RefusedRepair": "Réparation refusée",
+        "ApprovedRepair": "Réparation approuvée"
+    },
+    "role": {
+        "WhiteCollar": "Col blanc",
+        "BlueCollar": "Col bleu",
+        "Citizen": "Citoyen",
+        "Admin": "Administrateur"
+    },
+    "Stats": {
+    "FILTER": {
+      "PERIOD": "Période",
+      "CATEGORY": "Catégorie",
+      "ALL": "Toutes les catégories",
+      "DAY": "Jour",
+      "WEEK": "Semaine",
+      "MONTH": "Mois",
+      "YEAR": "Année"
+    },
+    "CHART": {
+      "REPORTED": "Problèmes signalés",
+      "PER_PERIOD": "Problèmes par période"
+    },
+    "KPI": {
+      "RESOLUTION": "Temps moyen pour la résolution",
+      "INCHARGE": "Moyenne de temps pour la prise en charge",
+      "ASSIGN": "Moyenne de temps pour l'assignation",
+      "DONE": "Incidents traités"
+    },
+    "UNITS": {
+      "MINUTE": "minute",
+      "MINUTES": "minutes",
+      "HOUR": "heure",
+      "HOURS": "heures",
+      "DAY": "jour",
+      "DAYS": "jours"
+    }
+  }
+}
+
+        
+    

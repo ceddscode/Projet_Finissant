@@ -1,0 +1,126 @@
+<div class="page">
+  <div class="details-header">
+    <h1>{{ 'allIncidents.title' | translate }}</h1>
+  </div>
+
+  <div class="incidents-filters">
+    <div class="filter-row">
+      <div class="filter-item search-bar">
+        <label>{{'allIncidents.search' | translate}}</label>
+        <input [(ngModel)]="searchTerm" (input)="onSearchChange()" type="text" placeholder="{{ 'allIncidents.hintSearch' | translate }}" />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+
+      <div class="filter-item">
+        <label>{{ 'allIncidents.category' | translate }}</label>
+        <select [(ngModel)]="selectedCategory" (change)="onFilterChange()">
+          <option value="">{{'allIncidents.categorieTitle' | translate}}</option>
+          <option *ngFor="let cat of categories" [value]="cat.value">{{categoryLabel(cat.value)}}</option>
+        </select>
+      </div>
+
+      <div class="filter-item status-select" >
+        <label>{{'allIncidents.status' | translate}}</label>
+        <select [(ngModel)]="selectedStatus" (change)="onFilterChange()">
+          <option value="">{{'allIncidents.statusTitle' | translate}}</option>
+          <option *ngFor="let stat of statuses" [value]="stat.value">{{statusLabel(stat.value)}}</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label>{{ 'allIncidents.sortBy' | translate }}</label>
+        <select [(ngModel)]="sort" (change)="onFilterChange()">
+            <option value="CreatedAt">{{'sortEnum.creationDate' | translate}}</option>
+            <option value="Categories">{{'sortEnum.category' | translate}}</option>
+            <option value="Status">{{'sortEnum.status' | translate}}</option>
+            <option value="ClosedAt">{{'sortEnum.endDate' | translate}}</option>
+            <option value="LikeCount">{{'sortEnum.like' | translate}}</option> <!-- Ajouté pour popularité -->
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label>{{'allIncidents.orderBy' | translate}}</label>
+        <select [(ngModel)]="direction" (change)="onFilterChange()">
+            <option value="asc">{{'orderEnum.asc' | translate}}</option>
+            <option value="desc">{{'orderEnum.desc' | translate}}</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label>{{'allIncidents.dateFrom' | translate}}</label>
+        <input type="date" [(ngModel)]="dateFrom" (change)="onFilterChange()"/>
+      </div>
+
+      <div class="filter-item">
+        <label>{{'allIncidents.dateTo' | translate}}</label>
+        <input type="date" [(ngModel)]="dateTo" (change)="onFilterChange()"/>
+      </div>
+
+      <div class="filter-item">
+        <label>{{'allIncidents.filterBy' | translate}}</label>
+        <select [(ngModel)]="dateField" (change)="onFilterChange()">
+          <option value="creation">{{'dateSortEnum.createDate' | translate}}</option>
+          <option value="closing">{{'dateSortEnum.endDate' | translate}}</option>
+        </select>
+      </div>
+ <button type="button" class="filter-action-btn" (click)="openExportModal()">
+  <i class="fas fa-file-export"></i>
+  Export
+</button>
+
+<div class="modal-backdrop" *ngIf="exportModalOpen" (click)="closeExportModal()"></div>
+
+<div class="modal" *ngIf="exportModalOpen">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Export</h3>
+    <p>Choisis le format</p>
+
+    <div class="modal-actions">
+      <button type="button" class="modal-btn" (click)="export('pdf')">PDF</button>
+      <button type="button" class="modal-btn" (click)="export('excel')">Excel</button>
+      <button type="button" class="modal-btn" (click)="export('json')">JSON</button>
+    </div>
+
+    <button type="button" class="modal-close-btn" (click)="closeExportModal()">Fermer</button>
+  </div>
+</div>
+</div>
+  </div>
+  <div class="incidents-list">
+  <div *ngFor="let i of incidents" [routerLink]="['/details', i.id]">
+    <div class="incident-card">
+      <div class="incident-content">
+        <h3 class="incident-title">{{i.title}}</h3>
+       <div class="incident-meta">
+  <div class="meta-left">
+    <div class="meta-item meta-location"><i class="fas fa-map-marker-alt meta-icon"></i><span>{{ i.location }}<span *ngIf="i.quartier">, quartier {{ i.quartier }}</span></span></div>
+    <div class="meta-item meta-category"><i class="fas fa-tag meta-icon"></i><span>{{categoryLabel(i.category)}}</span></div>
+    <div class="meta-item meta-likes"><i class="fas fa-heart meta-icon"></i><span>{{ i.likeCount }}</span></div>
+  </div>
+  <div class="meta-right">
+    <div class="meta-item meta-created"><i class="fas fa-clock meta-icon"></i><span>{{ i.createdDate  | date:'yyyy-MM-dd' }}</span></div>
+  </div>
+</div>
+        <div class="status-badge-container">
+          <span class="status-badge" [ngClass]="'status-' + getStatusClass(i.status)">{{statusLabel(i.status)}}</span>
+        </div>
+      </div>
+      <div class="incident-image">
+       <img [src]="i.imageUrl" />
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div *ngIf="!incidents.length" class="empty-state">
+    <i class="fas fa-clipboard-list empty-icon"></i>
+    <h3>{{'allIncidents.noIncident' | translate}}</h3>
+    <p>{{'allIncidents.changeFilter' | translate }}</p>
+  </div>
+
+  <div class="pagination-container">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">{{'allIncidents.btnPrevious' | translate}}</button>
+    <button *ngFor="let page of pagesArray" [class.active]="page === currentPage" (click)="goToPage(page)">{{ page }}</button>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">{{'allIncidents.btnNext' | translate}}</button>
+  </div>
+</div>

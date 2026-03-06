@@ -1,0 +1,30 @@
+<div class="overlay">
+
+    <div class="game-window">
+
+        <div class="header">
+            <span>Score: {{ score }}</span>
+            <button (click)="close()">X</button>
+        </div>
+
+        <div class="board" [style.width.px]="gridSize * tileSize" [style.height.px]="gridSize * tileSize">
+
+            <div *ngFor="let segment of snake" class="segment" [style.width.px]="segmentSize"
+                [style.height.px]="segmentSize" [style.transform]="getSegmentTransform(segment)">
+            </div>
+
+            <div *ngIf="food" class="food" [style.width.px]="foodSize" [style.height.px]="foodSize"
+                [style.transform]="getFoodTransform()">
+            </div>
+
+            <div *ngFor="let obstacle of obstacles" class="obstacle" [style.width.px]="tileSize"
+                [style.height.px]="tileSize" [style.transform]="getTransform(obstacle)">
+            </div>
+
+        </div>
+
+        <button *ngIf="gameOver" (click)="startGame()">Rejouer</button>
+
+    </div>
+
+</div>

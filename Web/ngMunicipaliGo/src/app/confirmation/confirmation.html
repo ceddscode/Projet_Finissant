@@ -1,0 +1,67 @@
+<div class="page">
+  <div class="details-header">
+    <h1>{{ 'incidents.waitingConfirmation' | translate }}</h1>
+  </div>
+
+  <div class="incidents-list">
+
+    <div
+      *ngFor="let i of incidents"
+      class="incident-card"
+      [routerLink]="['/confirmation-details', i.id]"
+    >
+      <div class="incident-content">
+        <h3 class="incident-title">{{ i.title }}</h3>
+
+        <div class="incident-meta">
+          <div class="meta-item">
+            <i class="fas fa-map-marker-alt meta-icon"></i>
+            <span>{{ i.location }}<span *ngIf="i.quartier">, quartier {{ i.quartier }}</span></span>
+          </div>
+
+          <div class="meta-item">
+            <i class="fas fa-tag meta-icon"></i>
+            <span>{{ categoryLabel(i.category) }}</span>
+          </div>
+
+          <div class="meta-item">
+            <i class="fas fa-clock meta-icon"></i>
+            <span>{{ translateDate(i.createdDate) }}</span>
+          </div>
+
+          <div class="meta-item">
+            <i class="fas fa-heart meta-icon"></i>
+            <span>{{ i.likeCount }}</span>
+          </div>
+        </div>
+
+        <div class="status-badge-container">
+          <span
+            class="status-badge"
+            [ngClass]="'status-' + getStatusClass(i.status)"
+          >
+            {{ statusLabel(i.status) }}
+          </span>
+        </div>
+      </div>
+
+      <div class="incident-image">
+        <img
+          *ngIf="i.imagesUrl?.length"
+          [src]="i.imagesUrl[0]"
+          [alt]="i.title"
+        />
+        <div *ngIf="!i.imagesUrl?.length" class="no-image">
+          <i class="fas fa-camera"></i>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!incidents.length" class="empty-state">
+      <i class="fas fa-clipboard-list empty-icon"></i>
+      <h3>{{ 'incidents.noIncidentsConfirmation' | translate }}</h3>
+      <p>{{ 'incidents.allCaughtUp' | translate }}</p>
+    </div>
+
+  </div>
+</div>

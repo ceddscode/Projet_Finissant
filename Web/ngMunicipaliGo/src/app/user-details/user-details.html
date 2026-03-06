@@ -1,0 +1,190 @@
+<div class="page" *ngIf="user; else loading">
+@if (!isOnline()) {
+  <div class="offline-banner">
+    ⚠️ Vous êtes hors ligne. Veuillez vous reconnecter à Internet.
+  </div>
+}
+
+<br>
+  <form [formGroup]="formGroup">
+
+    <div class="details-header">
+      <h1>{{ 'user-details.title' | translate }}</h1>
+    </div>
+
+    <div class="incident-card details-card">
+      <div class="incident-content">
+        <div class="left-grid">
+
+          <!-- NAME -->
+          <div class="left-top">
+            <h3 class="incident-title big">
+              {{ formGroup.get('firstName')?.value }}
+              {{ formGroup.get('lastName')?.value }}
+            </h3>
+
+            <div class="incident-meta">
+
+              <!-- FIRST NAME -->
+              <div class="meta-item">
+                <i class="fas fa-user meta-icon"></i>
+                <input class="edit-input" maxlength="50" formControlName="firstName"
+                  [placeholder]="'user-details.firstName' | translate" />
+
+                @if(formGroup.get('firstName')?.invalid &&
+                formGroup.get('firstName')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.firstName' | translate }}
+                </small>
+                }
+              </div>
+
+              <!-- LAST NAME -->
+              <div class="meta-item">
+                <i class="fas fa-user meta-icon"></i>
+                <input class="edit-input" maxlength="50" formControlName="lastName"
+                  [placeholder]="'user-details.name' | translate" />
+
+                @if(formGroup.get('lastName')?.invalid &&
+                formGroup.get('lastName')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.lastName' | translate }}
+                </small>
+                }
+              </div>
+
+              <!-- EMAIL -->
+              <div class="meta-item">
+                <i class="fas fa-envelope meta-icon"></i>
+                <input class="edit-input" maxlength="50" type="email" formControlName="email"
+                  [placeholder]="'user-details.email' | translate" />
+
+                @if(formGroup.get('email')?.invalid &&
+                formGroup.get('email')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.email' | translate }}
+                </small>
+                }
+              </div>
+
+              <!-- PHONE -->
+              <div class="meta-item">
+                <i class="fas fa-phone meta-icon"></i>
+                <input class="edit-input" maxlength="15" formControlName="phoneNumber"
+                  [placeholder]="'user-create.phone' | translate" />
+
+                @if(formGroup.get('phoneNumber')?.invalid &&
+                formGroup.get('phoneNumber')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.phone' | translate }}
+                </small>
+                }
+              </div>
+
+            </div>
+          </div>
+
+          <div class="meta-item">
+            <i class="fas fa-user-shield meta-icon"></i>
+
+            <select class="edit-input" formControlName="role">
+
+              <option value="Citizen">
+                {{ 'user-details.selectRole.citizen' | translate }}
+              </option>
+
+              <option value="Blue collar">
+                {{ 'user-details.selectRole.blueCollar' | translate }}
+              </option>
+
+              <option value="White collar">
+                {{ 'user-details.selectRole.whiteCollar' | translate }}
+              </option>
+
+            </select>
+          </div>
+
+          <!-- ADDRESS -->
+          <div class="address-section">
+            <h4 class="section-title">
+              <i class="fas fa-map-marker-alt"></i>
+              {{ 'user-details.address' | translate }}
+            </h4>
+
+            <div class="address-grid">
+
+              <div class="field">
+                <label>{{ 'user-details.roadNumber' | translate }}</label>
+                <input class="edit-input" max="9999" type="number" formControlName="roadNumber" />
+
+                @if(formGroup.get('roadNumber')?.invalid &&
+                formGroup.get('roadNumber')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.roadNumber' | translate }}
+                </small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-details.roadName' | translate }}</label>
+                <input class="edit-input" maxlength="75" formControlName="roadName" />
+
+                @if(formGroup.get('roadName')?.invalid &&
+                formGroup.get('roadName')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.roadName' | translate }}
+                </small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-details.city' | translate }}</label>
+                <input class="edit-input" maxlength="50" formControlName="city" />
+                @if(formGroup.get('city')?.invalid &&
+                formGroup.get('city')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.city' | translate }}
+                </small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-details.postalCode' | translate }}</label>
+                <input class="edit-input" maxlength="8" formControlName="postalCode"
+                  placeholder="{{ 'user-create.postalCode' | translate }}" />
+                @if(formGroup.get('postalCode')?.invalid &&
+                formGroup.get('postalCode')?.touched) {
+                <small class="error">
+                  {{ 'user-details.errors.postalCode' | translate }}
+                </small>
+                }
+              </div>
+
+            </div>
+          </div>
+
+          <!-- BUTTONS -->
+          <button class="btn primary" type="button" (click)="saveChanges()"
+            [disabled]="formGroup.invalid || isSaving() || !isOnline()">
+            @if (isSaving()) {
+            <span class="spinner"></span>
+            } @else {
+            {{ 'user-details.buttons.save' | translate }}
+            }
+          </button>
+
+          <button type="button" class="btn primary" style="background-color: whitesmoke; color: black;"  
+            routerLink="/admin">
+            {{ 'user-details.buttons.cancel' | translate }}
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<ng-template #loading>
+  <p class="loading">Chargement...</p>
+</ng-template>

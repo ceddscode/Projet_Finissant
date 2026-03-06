@@ -1,0 +1,69 @@
+<div class="incident-list-root">
+  @if (isLoading()) {
+    <div class="incident-list-empty-state">
+      <h3>{{ 'allIncidents.waitingShow' | translate }}</h3>
+    </div>
+  } @else {
+    @if ((incidents() ?? []).length > 0) {
+      @for (i of (incidents() ?? []); track i) {
+        <div [routerLink]="['/details', i.id]" class="incident-list-link">
+          <div class="incident-list-card">
+            <div class="incident-list-content">
+              <h3 class="incident-title">{{ i.title }}</h3>
+              <div class="incident-meta">
+                <div class="meta-left">
+                  <div class="meta-item meta-location"><i class="fas fa-map-marker-alt meta-icon"></i><span>{{ i.location }}</span></div>
+                  <div class="meta-item meta-category"><i class="fas fa-tag meta-icon"></i><span>{{ i.category | categoryLabel | async }}</span></div>
+                  <div class="meta-item meta-likes"><i class="fas fa-heart meta-icon"></i><span>{{ i.likeCount }}</span></div>
+                </div>
+                <div class="meta-right">
+                  <div class="meta-item meta-created"><i class="fas fa-clock meta-icon"></i><span>{{ i.createdDate | date:'yyyy-MM-dd' }}</span></div>
+                  <div class="meta-item meta-closed"><i class="fas fa-calendar-check meta-icon"></i><span>{{ i.closedDate ? (i.closedDate | date:'yyyy-MM-dd') : ('allIncidents.closedDate' | translate) }}</span></div>
+                </div>
+              </div>
+              <div class="status-badge-container">
+                <span class="incident-list-status-badge" [class]="'status-' + (i.status | statusClass)">{{ i.status | statusLabel | async }}</span>
+              </div>
+            </div>
+            <div class="incident-list-image">
+              <img class="no-image" [src]="i.imageUrl" [alt]="i.title" />
+            </div>
+          </div>
+        </div>
+      }
+      <div class="incident-list-pagination-container">
+        <button (click)="goToPage((currentPage() ?? 1) - 1)" [disabled]="(currentPage() ?? 1) === 1">{{ 'allIncidents.btnPrevious' | translate }}</button>
+        @for (page of (pagesArray() ?? []); track page) {
+          <button [class.active]="page === (currentPage() ?? 1)" (click)="goToPage(page)">{{ page }}</button>
+        }
+        <button (click)="goToPage((currentPage() ?? 1) + 1)" [disabled]="(currentPage() ?? 1) === (totalPages() ?? 1)">{{ 'allIncidents.btnNext' | translate }}</button>
+      </div>
+    } @else {
+      @if (errorMessage()) {
+        <div class="incident-list-empty-state">
+          <i class="fas fa-exclamation-triangle empty-icon" aria-hidden="true"></i>
+          <h3>
+            @if (errorMessage() === 'Pas de connexion Internet' || errorMessage() === 'No Internet connection') {
+              {{ 'allIncidents.errorNoInternet' | translate }}
+            } @else {
+              {{ 'allIncidents.errorServer' | translate }}
+            }
+          </h3>
+          <p class="incident-list-error-help">
+            @if (errorMessage() === 'Pas de connexion Internet' || errorMessage() === 'No Internet connection') {
+              {{ 'allIncidents.errorNoInternetHelp' | translate }}
+            } @else {
+              {{ 'allIncidents.errorServerHelp' | translate }}
+            }
+          </p>
+        </div>
+      } @else {
+        <div class="incident-list-empty-state">
+          <i class="fas fa-clipboard-list empty-icon" aria-hidden="true"></i>
+          <h3>{{ 'allIncidents.noIncident' | translate }}</h3>
+          <p>{{ 'allIncidents.changeFilter' | translate }}</p>
+        </div>
+      }
+    }
+  }
+</div>

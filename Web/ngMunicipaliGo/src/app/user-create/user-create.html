@@ -1,0 +1,141 @@
+<div class="page">
+  <form [formGroup]="form" (ngSubmit)="Create()">
+
+    <div class="details-header">
+      <h1>{{ 'user-create.title' | translate }}</h1>
+    </div>
+
+    <div class="incident-card details-card">
+      <div class="incident-content">
+        <div class="left-grid">
+
+          <div class="left-top">
+            <div class="incident-meta">
+
+              <div class="meta-item">
+                <i class="fas fa-user meta-icon"></i>
+                <input class="edit-input" maxlength="50" formControlName="firstName"
+                  [placeholder]="'user-create.firstName' | translate" />
+                @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+                  <small class="error">Le prénom est requis</small>
+                }
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-user meta-icon"></i>
+                <input class="edit-input" maxlength="50" formControlName="lastName"
+                  [placeholder]="'user-create.lastName' | translate" />
+                @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+                  <small class="error">Le nom est requis</small>
+                }
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-envelope meta-icon"></i>
+                <input class="edit-input" maxlength="60" type="email" formControlName="email"
+                  [placeholder]="'user-create.email' | translate" />
+                @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                  <small class="error">Email invalide</small>
+                }
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-phone meta-icon"></i>
+                <input class="edit-input" maxlength="15" formControlName="phoneNumber"
+                  [placeholder]="'user-create.phone' | translate" />
+                @if (form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched) {
+                  <small class="error">Téléphone invalide</small>
+                }
+              </div>
+
+            </div>
+          </div>
+
+          <div class="section-title">
+            <i class="fas fa-lock"></i>
+            {{ 'user-create.security' | translate }}
+          </div>
+
+          <div class="incident-meta">
+
+            <div class="meta-item">
+              <i class="fas fa-key meta-icon"></i>
+              <input class="edit-input" type="password" formControlName="password"
+                [placeholder]="'user-create.password' | translate" />
+              @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                <small class="error">Mot de passe invalide</small>
+              }
+            </div>
+
+            <div class="meta-item">
+              <i class="fas fa-key meta-icon"></i>
+              <input class="edit-input" type="password" formControlName="passwordConfirm"
+                [placeholder]="'user-create.passwordConfirm' | translate" />
+              @if (form.get('passwordConfirm')?.invalid && form.get('passwordConfirm')?.touched) {
+                <small class="error">Confirmation requise</small>
+              }
+              @if ((form.get('passwordConfirm')?.touched || form.get('password')?.touched) && form.errors?.['passwordMismatch']) {
+                <small class="error">Les mots de passe ne correspondent pas</small>
+              }
+            </div>
+
+          </div>
+
+          <div class="address-section">
+            <h4 class="section-title">
+              <i class="fas fa-map-marker-alt"></i>
+              {{ 'user-create.address' | translate }}
+            </h4>
+
+            <div class="address-grid">
+              <div class="field">
+                <label>{{ 'user-create.roadNumber' | translate }}</label>
+                <input class="edit-input" type="number" formControlName="roadNumber" />
+                @if (form.get('roadNumber')?.invalid && form.get('roadNumber')?.touched) {
+                  <small class="error">Numéro civique invalide</small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-create.roadName' | translate }}</label>
+                <input class="edit-input" maxlength="75" formControlName="roadName" />
+                @if (form.get('roadName')?.invalid && form.get('roadName')?.touched) {
+                  <small class="error">Nom de rue requis</small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-create.city' | translate }}</label>
+                <input class="edit-input" maxlength="50" formControlName="city" />
+                @if (form.get('city')?.invalid && form.get('city')?.touched) {
+                  <small class="error">Ville requise</small>
+                }
+              </div>
+
+              <div class="field">
+                <label>{{ 'user-create.postalCode' | translate }}</label>
+                <input class="edit-input" maxlength="8" formControlName="postalCode"
+                  [placeholder]="'user-create.postalCode' | translate" />
+                @if (form.get('postalCode')?.invalid && form.get('postalCode')?.touched) {
+                  <small class="error">Code postal invalide</small>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit" [disabled]="form.invalid">
+              {{ 'user-create.buttons.create' | translate }}
+            </button>
+
+            <button type="button" class="btn primary" style="background-color: whitesmoke; color: black;" (click)="goBack()">
+              Retour
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

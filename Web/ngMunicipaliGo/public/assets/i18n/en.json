@@ -1,0 +1,339 @@
+{
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "button": "Login",
+    "Error": "Login failed. Please check your credentials.",
+    "Required": "Email is required",
+    "PasswordRequired": "Password is required"
+  },
+  "app": {
+    "button1": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "map": "Map",
+    "validation": "Validation",
+    "assignment": "Assignment",
+    "confirmation": "To confirm",
+    "createUser": "Create User",
+    "listUser": "Users",
+    "listIncident": "All incidents",
+    "stats": "Statistics"
+  },
+  "incidents": {
+    "waitingApproval": "Incidents awaiting validation",
+    "waitingAssignment": "Incidents awaiting assignment",
+    "waitingConfirmation": "Incidents awaiting confirmation",
+    "title": "Title",
+    "status": "Status",
+    "location": "Location",
+    "category": "Category",
+    "createdAt": "Creation date",
+    "imagesUrl": "Images",
+    "noIncidentsWaiting": "No incidents waiting",
+    "allCaughtUp": "You're all caught up! No incidents waiting.",
+    "noIncidentsAssignation": "No incidents awaiting assignment",
+    "noIncidentsConfirmation": "No incidents awaiting confirmation"
+  },
+  "details": {
+    "title": "Détails",
+    "descriptionPlaceholder": "Describe the incident",
+    "titleConfirmationDetails": "Confirmation Details",
+    "description": "Description",
+    "images": "Images",
+    "historyTitle": "History",
+    "confirmationDescription" : "Description for confirmation",
+    "buttons": {
+      "edit": "Edit",
+      "assignBlueCollar": "Assign to blue-collar",
+      "assignCitizen": "Assign to citizen",
+      "confirmIncident": "Confirm",
+      "refuseIncident": "Refuse",
+      "back": "Back"
+    },
+    "alerts": {
+      "approved": "Incident approved successfully!",
+      "refused": "Incident refused successfully!",
+      "assignedToCitizen": "Incident assigned to a citizen successfully!",
+      "assignedToBlueCollar": "Incident assigned to a blue-collar successfully!",
+      "confirmed": "Incident confirmed successfully!",
+      "descPlaceholderRefused": "Justify the refusal",
+      "edited":"Incident edited"
+
+    },
+    "fields": {
+      "description": "Description"
+    },
+    "comments": {
+      "title": "Comments",
+      "loading": "Loading comments...",
+      "reports": "reports",
+      "delete": "Delete",
+      "noComments": "No comments",
+      "sort": "Sort",
+      "sortNewest": "Newest",
+      "sortMostReported": "Most reported"
+    }
+  },
+  "common": {
+    "approve": "Approve",
+    "reject": "Reject",
+    "assign": "Assign",
+    "loading": "Loading incident…",
+    "retry":"Reconnect"
+  },
+  "map": {
+    "scrollHint": "Press Ctrl and scroll",
+    "search": "Search",
+    "reset": "Reset",
+    "status": "Status",
+    "neighborhood": "Neighborhood",
+    "incidents": "Incidents",
+    "focus": "Focus",
+    "open": "Open"
+  },
+  "date": {
+    "justNow": "Just now",
+    "minutesAgo_one": "1 minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo_one": "1 hour ago",
+    "hoursAgo_other": "{{count}} hours ago",
+    "daysAgo_one": "1 day ago",
+    "daysAgo_other": "{{count}} days ago",
+    "monthsAgo_one": "1 month ago",
+    "monthsAgo_other": "{{count}} months ago"
+  },
+  "chat": {
+    "online": "Online",
+    "offline": "Offline",
+    "typeMessage": "Type your message to",
+    "noConversations": "No conversations found",
+    "recent": "Recent",
+    "searchPlaceholder": "Search conversations...",
+    "yourMessage": "Your messages",
+    "selectOrStart": "Select a conversation or start a new one",
+    "newConversation": "New Conversation",
+    "searchPeoplePlaceholder": "Search blue collars...",
+    "shareIncident": "Share an incident",
+    "noUsers": "No users found",
+    "sharedIncident": "Shared an incident 📎",
+    "loading": "Loading..."
+  },
+  "enums": {
+    "status": {
+      "WaitingForValidation": "Waiting for validation",
+      "WaitingForAssignation": "Waiting for assignment",
+      "AssignedToCitizen": "Assigned to citizen",
+      "UnderRepair": "Under repair",
+      "Done": "Done",
+      "AssignedToBlueCollar": "Assigned to a blue collar",
+      "WaitingForAssignationToCitizen": "Waiting for a citizen to take the task",
+      "WaitingForConfirmation": "Waiting to be closed"
+    },
+    "category": {
+      "Propreté": "Cleanliness",
+      "Mobilier": "Street furniture",
+      "Signalisation": "Signage",
+      "EspacesVerts": "Green spaces",
+      "Saisonnier": "Seasonal",
+      "Social": "Social",
+      "cleanliness": "Cleanliness",
+      "furniture": "Street furniture",
+      "roadSigns": "Signage",
+      "greenSpaces": "Green spaces",
+      "seasonal": "Seasonal",
+      "social": "Social"
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "userManagement": "User Management",
+    "createUser": "Create User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "userList": "User List",
+    "name": " Last Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "role": "Role",
+    "actions": "Actions",
+    "noUsers": "No users found"
+
+  },
+  "user-details": {
+    "title": "User Details",
+    "name": "Last Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "role": "Role",
+    "address": "Address",
+    "roadNumber": "Road Number",
+    "roadName": "Road Name",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "phone": "Phone",
+    "buttons": {
+      "save": "Save",
+      "cancel": "Back"
+    },
+    "selectRole": {
+      "blueCollar": "Blue collar",
+      "citizen": "Citizen",
+      "whiteCollar": "White collar"
+    },
+    "errors": {
+      "firstName": "First name is required (2–50 characters)",
+      "lastName": "Last name is required (2–50 characters)",
+      "email": "Please enter a valid email",
+      "phone": "Please enter a valid phone number",
+      "roadNumber": "Road number is required",
+      "roadName": "Road name must be between 2 and 100 characters",
+      "city": "City is required",
+      "postalCode": "Invalid postal code (e.g. A1A 1A1)"
+    }
+  },
+  "user-create": {
+    "title": "Create User",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "security": "Security",
+    "password": "Password",
+    "passwordConfirm": "Confirm Password",
+    "address": "Address",
+    "roadNumber": "Street Number",
+    "roadName": "Street",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "buttons": {
+      "create": "Create",
+      "cancel": "Back"
+    },
+    "stats": {
+      "title": "Statistics",
+      "incidentsByCategory": "Incidents by category",
+      "incidentsByStatus": "Incidents by status",
+      "incidentsOverTime": "Incidents over time"
+    }
+  },
+  "roles": {
+    "admin": "Admin",
+    "citizen": "Citizen",
+    "blueCollar": "Blue collar",
+    "whiteCollar": "White collar"
+  },
+  "allIncidents": {
+    "title": "All incidents",
+    "citizen": "Citizen",
+    "blueCollar": "Blue collar",
+    "whiteCollar": "White collar",
+    "category": "Category",
+    "search": "search",
+    "status": "Status",
+    "sortBy": "Sort by",
+    "orderBy": "Order by",
+    "dateFrom": "Date from",
+    "dateTo": "Date to",
+    "filterBy": "Filter by",
+    "hintSearch": "Search by title or location",
+    "categorieTitle": "All categories",
+    "statusTitle": "All statuses",
+    "datePlaceholder": "yyyy-mm-dd",
+    "closedDate": "Not closed yet",
+    "btnNext": "Next",
+    "btnPrevious": "Previous",
+    "noIncident": "No results found",
+    "changeFilter": "Try adjusting your filters or sorting.",
+    "errorNoInternet": "No Internet connection",
+    "errorNoInternetHelp": "Check your Wi-Fi or network cable connection.",
+    "errorServer": "Error loading incidents",
+    "errorServerHelp": "Please try again later or contact support if the problem persists.",
+    "waitingShow": "Loading..."
+  },
+  "modal": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "refuse": "Refuse",
+    "sessionExpired": "Session expired"
+  },
+  "sortEnum": {
+    "creationDate": "Creation date",
+    "category": "Category",
+    "status": "Status",
+    "endDate": "End date",
+    "like": "Popularity"
+  },
+  "orderEnum": {
+    "asc": "Less Recent",
+    "desc": "Most Recent"
+  },
+  "dateSortEnum": {
+    "createDate": "Creation date",
+    "endDate": "Closing date"
+  },
+  "title": "Create User",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "email": "Email : example@example.com",
+  "phone": "Phone Number : 4506325478",
+  "security": "Security",
+  "password": "Password",
+  "passwordConfirm": "Confirm Password",
+  "address": "Address",
+  "roadNumber": "Street Number",
+  "roadName": "Street",
+  "city": "City",
+  "postalCode": "Postal Code : H2X 3Y7",
+  "buttons": {
+    "create": "Create",
+    "cancel": "Back"
+  },
+  "interventionType": {
+    "Created": "Incident created",
+    "Validated": "Incident validated",
+    "AssignedToCitizen": "Assigned to citizen",
+    "TaskTookByCitizen": "Task taken by citizen",
+    "AssignedToBlueCollar": "Assigned to field worker",
+    "UnderRepair": "Under repair",
+    "DoneRepairing": "Repair completed",
+    "RefusedRepair": "Repair refused",
+    "ApprovedRepair": "Repair approved"
+  },
+  "role": {
+    "WhiteCollar": "Col blanc",
+    "BlueCollar": "Col bleu",
+    "Citizen": "Citoyen",
+    "Admin": "Administrateur"
+  },
+  "Stats": {
+    "FILTER": {
+      "PERIOD": "Period",
+      "CATEGORY": "Category",
+      "ALL": "All Categories",
+      "DAY": "Day",
+      "WEEK": "Week",
+      "MONTH": "Month",
+      "YEAR": "Year"
+    },
+    "CHART": {
+      "REPORTED": "Reported Issues",
+      "PER_PERIOD": "Issues Over Time"
+    },
+    "KPI": {
+      "RESOLUTION": "Average Resolution Time",
+      "INCHARGE": "Average In-Charge Time",
+      "ASSIGN": "Average Assignment Time",
+      "DONE": "Resolved Incidents"
+    },
+    "UNITS": {
+      "MINUTE": "minute",
+      "MINUTES": "minutes",
+      "HOUR": "hour",
+      "HOURS": "hours",
+      "DAY": "day",
+      "DAYS": "days"
+    }
+  }
+}

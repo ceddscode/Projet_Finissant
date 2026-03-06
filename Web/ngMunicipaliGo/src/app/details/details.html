@@ -1,0 +1,302 @@
+@if (errorType() !== 'none') {
+  <div class="error-banner" role="alert" aria-live="assertive">
+    @switch (errorType()) {
+      @case ('offline') {
+        <div class="error-title">{{ 'allIncidents.errorNoInternet' | translate }}</div>
+        <div class="error-sub">{{ 'allIncidents.errorNoInternetHelp' | translate }}</div>
+      }
+      @case ('server') {
+        <div class="error-title">{{ 'allIncidents.errorServer' | translate }}</div>
+        <div class="error-sub">{{ 'allIncidents.errorServerHelp' | translate }}</div>
+      }
+    }
+
+    <button class="btn" (click)="retry()" [disabled]="isSubmitting()">
+      {{ 'common.retry' | translate }}
+    </button>
+  </div>
+}
+
+@if (incident(); as incident) {
+  <div class="page">
+    <div class="details-header">
+      <h1>{{ 'details.title' | translate }}</h1>
+    </div>
+
+    <div class="incident-card details-card">
+      <div class="incident-content">
+        <div class="left-grid">
+          <div class="left-top">
+            <div class="meta-item">
+              <i class="fas fa-pen meta-icon"></i>
+              <input
+                class="edit-input incident-title big title-input"
+                [(ngModel)]="incident.title"
+                name="title"
+                [placeholder]="'incidents.title' | translate"
+              />
+            </div>
+
+            <div class="incident-meta">
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt meta-icon"></i>
+                <span>
+                  {{ incident.location }}
+                  @if (incident.quartier) { <span>, quartier {{ incident.quartier }}</span> }
+                </span>
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-tag meta-icon"></i>
+                <select class="edit-input select-input" [(ngModel)]="incident.categories" name="categories">
+                  @for (cat of categories; track cat.value) {
+                    <option [ngValue]="cat.value">{{ categoryLabel(cat.value) | translate }}</option>
+                  }
+                </select>
+              </div>
+@if (incident.status === Status.WaitingForValidation) {
+  <div class="meta-item points-row">
+  <i class="fas fa-star meta-icon"></i>
+
+  <div class="points-wrap">
+    <span class="points-badge">
+      <i class="fas fa-bolt"></i>
+    </span>
+
+    <input
+      class="edit-input points-input"
+      type="number"
+      name="points"
+      [(ngModel)]="incident.points"
+       (contextmenu)="clearPoints($event)"
+    />
+  </div>
+</div>
+}
+
+              <div class="meta-item">
+                <i class="fas fa-clock meta-icon"></i>
+                <span>{{ translateDate(incident.createdAt) }}</span>
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-heart meta-icon text-danger"></i>
+                <span>{{ incident.likeCount ?? 0 }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-bottom">
+            <div class="meta-item" style="margin-bottom: 8px;">
+              <i class="fas fa-align-left meta-icon"></i>
+              <span>{{ 'details.description' | translate }}</span>
+            </div>
+
+            <textarea
+              class="edit-input edit-textarea textarea-input"
+              [(ngModel)]="incident.description"
+              name="description"
+              [placeholder]="'details.descriptionPlaceholder' | translate"
+            ></textarea>
+          </div>
+
+          @if (incidentHistory().length) {
+            <div class="incident-history-card">
+              <div class="history-header">
+                <i class="fas fa-history"></i>
+                <h2>{{ 'details.historyTitle' | translate }}</h2>
+              </div>
+
+              <div class="history-scroll">
+                @for (h of incidentHistory(); track $index) {
+                  <div class="history-item">
+                    <div class="history-icon">
+                      <i [ngClass]="getHistoryIcon(h.interventionType)"></i>
+                    </div>
+
+                    <div class="history-content">
+                      <div class="history-top">
+                        <strong>{{ h.nomUtilisateur }}</strong>
+                        <span class="role-badge">{{ roleLabel(h.roleUtilisateur) }}</span>
+                      </div>
+
+                      <div class="history-meta">
+                        <span class="history-type">{{ interventionLabel(h.interventionType) }}</span>
+                        <span class="history-date">{{ translateDate(h.updatedAt) }}</span>
+                      </div>
+
+                      @if (h.refusDescription && h.interventionType === 7) {
+                        <div class="history-refusal">
+                          <i class="fas fa-circle-xmark"></i>
+                          {{ h.refusDescription }}
+                        </div>
+                      }
+
+                      @if (h.confirmationImgUrls?.length && h.interventionType === 6) {
+                        <div class="history-images">
+                          @for (img of h.confirmationImgUrls; track $index) {
+                            <img [src]="img" alt="confirmation image" class="clickable" />
+                          }
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="actions">
+          @if (incident.status === Status.WaitingForValidation) {
+            <button class="btn primary" (click)="approveIncident(incident.points)" [disabled]="isSubmitting()">
+              {{ 'common.approve' | translate }}
+            </button>
+            <button class="btn danger" (click)="refuseIncident()" [disabled]="isSubmitting()">
+              {{ 'common.reject' | translate }}
+            </button>
+          }
+
+          @if (incident.status === Status.WaitingForAssignation || incident.status === Status.WaitingForValidation) {
+            <button class="btn" (click)="assignIncidentToBlueCollar()">
+              {{ 'details.buttons.assignBlueCollar' | translate }}
+            </button>
+            <button class="btn" (click)="assignIncidentToCitizen()">
+              {{ 'details.buttons.assignCitizen' | translate }}
+            </button>
+          }
+
+          <button class="btn primary" (click)="editIncident()" [disabled]="isSubmitting()">
+            {{ 'details.buttons.edit' | translate }}
+          </button>
+
+          <button class="btn ghost" (click)="goBack()" [disabled]="isSubmitting()">
+            {{ 'details.buttons.back' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="incident-image">
+        <div class="image-sticky">
+          @if (incident.imagesUrl?.length) {
+            <img
+              [src]="incident.imagesUrl[0]"
+              [alt]="incident.title"
+              class="main-image clickable"
+              (click)="openCarousel(0)"
+            />
+          } @else {
+            <div class="no-image"><i class="fas fa-camera"></i></div>
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (isOpen()) {
+      <div class="img-modal" (click)="closeCarousel()">
+        <div class="img-modal-content" (click)="$event.stopPropagation()">
+          <button class="close" (click)="closeCarousel()">✕</button>
+          <button class="nav left" (click)="prev()" [disabled]="currentIndex() === 0">‹</button>
+
+          <img [src]="incident.imagesUrl[currentIndex()]" alt="full image" />
+
+          <button class="nav right" (click)="next()" [disabled]="currentIndex() === incident.imagesUrl.length - 1">›</button>
+
+          <div class="counter">{{ currentIndex() + 1 }} / {{ incident.imagesUrl.length }}</div>
+        </div>
+      </div>
+    }
+
+    <!-- ✅ NEW CONFIRMATION CARD (matches confirmation page vibe) -->
+    <div
+      class="confirmation-card"
+      *ngIf="incident.confirmationDescription || (incident.confirmationImagesUrl?.length)"
+    >
+      <div class="confirmation-content">
+        <h3 class="confirmation-title">
+          <i class="fas fa-circle-check"></i>
+          {{ 'details.confirmationDescription' | translate }}
+        </h3>
+
+        <div class="confirmation-meta" *ngIf="incident.confirmationDescription">
+          <div class="meta-item confirmation-meta-item">
+            <i class="fas fa-align-left meta-icon"></i>
+            <span class="confirmation-text">{{ incident.confirmationDescription }}</span>
+          </div>
+        </div>
+
+        <div class="confirmation-images" *ngIf="incident.confirmationImagesUrl?.length">
+          <img
+            *ngFor="let img of incident.confirmationImagesUrl; let idx = index"
+            [src]="img"
+            alt="confirmation image"
+            class="confirmation-img clickable"
+            (click)="openConfirmationImage(idx)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal pour images de confirmation -->
+    <div class="img-modal" *ngIf="isConfirmationImgOpen" (click)="closeConfirmationImgModal()">
+      <div class="img-modal-content" (click)="$event.stopPropagation()">
+        <button class="close" (click)="closeConfirmationImgModal()">✕</button>
+        <button class="nav left" (click)="prevConfirmationImg()" [disabled]="confirmationImgIndex === 0">‹</button>
+        <img [src]="incident.confirmationImagesUrl[confirmationImgIndex]" alt="confirmation image" />
+        <button class="nav right" (click)="nextConfirmationImg()" [disabled]="confirmationImgIndex === incident.confirmationImagesUrl.length - 1">›</button>
+        <div class="counter">
+          {{ confirmationImgIndex + 1 }} / {{ incident.confirmationImagesUrl.length }}
+        </div>
+      </div>
+    </div>
+
+    <section class="comments-section" aria-labelledby="comments-title">
+      <div class="comments-header">
+        <h2 id="comments-title">{{ 'details.comments.title' | translate }}</h2>
+
+        <div class="comments-filter">
+          <label>{{ 'details.comments.sort' | translate }}</label>
+          <select [(ngModel)]="commentsSort" (change)="applyCommentsSort()">
+            <option value="newest">{{ 'details.comments.sortNewest' | translate }}</option>
+            <option value="mostReported">{{ 'details.comments.sortMostReported' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      @if (isLoadingComments()) {
+        <div class="loading-comments">{{ 'details.comments.loading' | translate }}</div>
+      } @else {
+        @if (comments().length > 0) {
+          <ul class="comments-list" aria-live="polite">
+            @for (comment of comments(); track comment.id) {
+              <li class="comment-item">
+                <div class="comment-header">
+                  <span class="comment-author">{{ comment.citizenName }}</span>
+                  <span class="comment-date">{{ translateDate(comment.createdAt) }}</span>
+                </div>
+
+                <div class="comment-message">{{ comment.message }}</div>
+
+                <span class="comment-reports" aria-label="{{ 'details.comments.reports' | translate }}">
+                  <i class="fas fa-flag"></i>
+                  {{ comment.reportsCount || 0 }} {{ 'details.comments.reports' | translate }}
+               </span>
+
+                <div class="comment-actions">
+                  <button type="button" class="comment-delete-btn" (click)="deleteComment(comment.id)" [disabled]="isSubmitting()">
+                    <i class="fas fa-trash"></i>
+                    {{ 'details.comments.delete' | translate }}
+                  </button>
+                </div>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="no-comments">{{ 'details.comments.noComments' | translate }}</div>
+        }
+      }
+    </section>
+  </div>
+} @else {
+  <p class="loading">{{ 'common.loading' | translate }}</p>
+}

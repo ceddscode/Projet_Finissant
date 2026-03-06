@@ -1,0 +1,86 @@
+@import 'custom-theme.scss';
+
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+}
+
+
+body {
+  overflow: hidden;
+  background: linear-gradient(135deg, #3b86a9, #4FA37A);
+  min-height: 100vh;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body { height: 100%; }
+
+/* === Material Datepicker — global override === */
+.filter-item .mat-mdc-form-field {
+  width: 100%;
+}
+
+.filter-item .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.filter-item .mat-mdc-text-field-wrapper {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  background: rgba(240, 248, 245, 0.96) !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 0 14px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: box-shadow 0.22s ease, border-color 0.22s ease, background 0.2s ease !important;
+}
+
+.filter-item .mat-mdc-text-field-wrapper:hover {
+  background: #ffffff !important;
+  border-color: rgba(63, 187, 149, 0.4) !important;
+}
+
+.filter-item .mdc-text-field--focused .mat-mdc-text-field-wrapper,
+.filter-item .mdc-text-field--focused {
+  background: #ffffff !important;
+  border-color: rgba(63, 187, 149, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(63, 187, 149, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.filter-item .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: transparent !important;
+}
+
+.filter-item .mdc-line-ripple,
+.filter-item .mat-mdc-form-field-focus-overlay {
+  display: none !important;
+}
+
+.filter-item .mat-mdc-input-element {
+  color: #4a6a72 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  caret-color: #3fbb95 !important;
+}
+
+.filter-item .mat-mdc-icon-button svg,
+.filter-item .mat-mdc-icon-button .mat-icon {
+  fill: #3fbb95 !important;
+  color: #3fbb95 !important;
+}
+
+.filter-item .mat-mdc-form-field-infix {
+  padding: 0 !important;
+  min-height: unset !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.filter-item .mat-mdc-form-field-suffix {
+  display: flex !important;
+  align-items: center !important;
+}

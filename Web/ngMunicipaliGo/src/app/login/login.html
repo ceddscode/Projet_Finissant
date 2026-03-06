@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" class="login-form" >
+  <h1>{{ 'login.title' | translate }}</h1>
+
+  <mat-form-field appearance="fill" subscriptSizing="dynamic">
+    <mat-label>{{ 'login.email' | translate }}</mat-label>
+    <input matInput type="email" formControlName="courriel" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" subscriptSizing="dynamic">
+    <mat-label>{{ 'login.password' | translate }}</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="login()"
+    [disabled]="!formGroup.valid"
+  >
+    {{ 'login.button' | translate }}
+  </button>
+</form>
