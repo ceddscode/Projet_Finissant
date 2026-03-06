@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745130635449",
+    "project_id": "municipalgo-mobile",
+    "storage_bucket": "municipalgo-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745130635449:android:fd4f5884ac60523a922b68",
+        "android_client_info": {
+          "package_name": "com.example.municipalgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANVpYKYYruh58aoArk11REtv32l9D3WuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

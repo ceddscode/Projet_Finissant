@@ -1,0 +1,79 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+# ===============================
+# Flutter
+# ===============================
+.dart_tool/
+.packages
+.pub-cache/
+build/
+**/build/
+
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Generated plugin files
+linux/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugins.cmake
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
+
+# ===============================
+# Flutter Web (generated)
+# ===============================
+web/flutter_service_worker.js
+web/version.json
+web/main.dart.js*
+web/flutter.js
+web/flutter_bootstrap.js*
+web/index.html
+web/manifest.json
+web/assets/
+web/icons/
+web/canvaskit/
+
+# ===============================
+# Firebase
+# ===============================
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Android
+android/.gradle/
+android/local.properties
+android/key.properties
+android/**/GeneratedPluginRegistrant.java
+
+# iOS / Xcode
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+macos/Pods/
+macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Windows
+windows/flutter/ephemeral/
+
+# Linux
+linux/flutter/ephemeral/
+
+# Logs
+*.log
+
+# Env / secrets
+
+lib/generated
