@@ -9,8 +9,8 @@ import 'dart:convert';
 const String API_AZURE = 'https://serveurmunicipaligo-c6c7hbgbhsdugjag.canadacentral-01.azurewebsites.net';
 const String API_LOCAL = 'http://10.0.2.2:5177';
 
- const String API_URL = API_AZURE;
-//const String API_URL = API_LOCAL;
+// const String API_URL = API_AZURE;
+const String API_URL = API_LOCAL;
 
 class AuthStore {
   static String? token;

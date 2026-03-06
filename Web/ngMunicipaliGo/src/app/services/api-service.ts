@@ -8,8 +8,8 @@ import { Citizen, RegisterDTO, SortedIncidentdsDTO, QueryParametersDTO, PagedRes
 })
 export class ApiService {
   http = inject(HttpClient);
-  //private serverUrl = "http://localhost:5177";
-    private serverUrl = "https://serveurmunicipaligo-c6c7hbgbhsdugjag.canadacentral-01.azurewebsites.net";
+  private serverUrl = "http://localhost:5177";
+  //  private serverUrl = "https://serveurmunicipaligo-c6c7hbgbhsdugjag.canadacentral-01.azurewebsites.net";
 
   async GetDetails(id: number): Promise<any> {
     try {
